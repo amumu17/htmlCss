@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="ie ie-6 no-js" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="ie ie-6 no-js" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="ie ie-6 no-js" lang="en"> <![endif]-->
+<!--[if IE 9]> <html class="ie ie-6 no-js" lang="en"> <![endif]-->
+<!--[if gt IE 9><!--> <html class="no-js" lang="en"> <!--<[endif]-->
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CSS3 Lightbox - A CSS-only lightbox" />
+    <meta name="keywords" content="css3, lightbox, overlay, effect, images, thumbnails" />
+    <meta name="author" content="Codrops" />
+    <title>css3-lightbox</title>
+    <link rel="shortcut icon" href="../favicon.ico">
+</head>
+<style>
+    body {
+        background-color: #333333;
+    }
+    .contianer {
+        height: auto;
+        text-align: center;
+        
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+    ul li{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        float: left;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+    ul li > a {
+        display: block;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    ul li > a span {
+        display: block;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: rgba(27,54,81,0.8);
+        font-size: 24px;
+        font-weight: bold;
+        -webkit-transition: opacity 0.3s linear;
+        -moz-transition: opacity 0.3s linear;
+        -o-transition: opacity 0.3s linear;
+        -ms-transition: opacity 0.3s linear;
+        transition: opacity 0.3s linear;
+    }
+    ul li > a:hover span {
+        opacity: 1;
+    }
+    ul li .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        color: #fff;
+        background: rgba(0, 0, 0, 0.9);
+        -webkit-transition: all .3s linear;
+        -moz-transition: all .3s  linear;
+        -ms-transition: all .3s linear;
+        -o-transition: all .3s linear;
+        transition: all .3s linear;
+    }
+    ul li .lightbox a {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: #fff;
+        display: none;
+    }
+    ul li .lightbox p {
+        position: absolute;
+        text-align: right;
+        bottom: 20px;
+        left: 20px;
+        font-weight: bold;
+        display: none;
+        margin: 5px auto;
+    }
+    ul li .lightbox img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        max-height: 60%;
+        max-width: 60%;
+        opacity: 0;
+        -webkit-transition: all .9s linear .3s;
+        -moz-transition: all .9s linear .3s;
+        -ms-transition: all .9s linear .3s;
+        -o-transition: all .9s linear .3s;
+        transition: all .9s linear .3s;
+    }
+    ul li .lightbox:target {
+        z-index: 1;
+        opacity: 1;
+    }
+    ul li .lightbox:target img {
+        max-width: 100%;
+        max-height: 100%;
+        opacity: 1;
+    }
+    ul li .lightbox:target a,
+    ul li .lightbox:target p {
+        display: block;
+    }
+    @media screen and (max-width: 1400px){
+        ul li {
+            width: 20%;
+            height: 300px;
+        }
+    }
+    @media screen and (max-width: 1024px){
+        ul li {
+            width: 25%;
+            height: 300px;
+        }
+    }
+    @media screen and (max-width: 700px){
+        ul li {
+            width: 50%;
+            height: 300px;
+        }
+    }
+    @media screen and (max-width: 400px){
+        ul li {
+            width: 100%;
+            height: 300px;
+        }
+    }
+</style>
+<body id="page">
+    <div class="contianer">
+        <header>
+            <h1>相册</h1>
+        </header>
+    </div>
+    <ul>
+        <li>
+            <a href="#image-1" style="background-image: url('images/8.jpeg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-1" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/8.jpeg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-2"  style="background-image: url('images/15.jpeg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-2" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/15.jpeg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-3"  style="background-image: url('images/psb(14).jpg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-3" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/psb(14).jpg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-4"  style="background-image: url('images/psb(16).jpg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-4" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/psb(16).jpg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-5"  style="background-image: url('images/psb(21).jpg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-5" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/psb(21).jpg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-6"  style="background-image: url('images/psb(26).jpg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-6" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/psb(26).jpg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-7"  style="background-image: url('images/psb(4).jpg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-7" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/psb(4).jpg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-8"  style="background-image: url('images/微信图片_20170920142959.jpg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-8" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/微信图片_20170920142959.jpg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-9"  style="background-image: url('images/微信图片_20170920143003.jpg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-9" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/微信图片_20170920143003.jpg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-10"  style="background-image: url('images/微信图片_20170920143010.jpg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-10" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/微信图片_20170920143010.jpg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+            <a href="#image-11"  style="background-image: url('images/微信图片_20170920143025.jpg')">
+                <span>大丽子</span>
+            </a>
+            <div id="image-11" class="lightbox">
+                <a href="#page">关闭</a>
+                <img src="images/微信图片_20170920143025.jpg" alt=""/>
+                <p>那时候的人儿</p>
+            </div>
+        </li>
+        <li>
+        <a href="#image-12"  style="background-image: url('images/微信图片_20170920143058.jpg')">
+            <span>大丽子</span>
+        </a>
+        <div id="image-12" class="lightbox">
+            <a href="#page">关闭</a>
+            <img src="images/微信图片_20170920143058.jpg" alt=""/>
+            <p>那时候的人儿</p>
+        </div>
+    </li>
+    </ul>
+</body>
+</html>

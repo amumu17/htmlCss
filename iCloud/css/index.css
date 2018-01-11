@@ -1,0 +1,449 @@
+body,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+dl,
+dt,
+dd,
+input,
+form,
+p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: normal;
+}
+a {
+  text-decoration: none;
+}
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+  display: flex;
+}
+.left {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-basis: 25%;
+  background: #333;
+  overflow: auto;
+}
+.left .top {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 10px;
+  border-bottom: 2px solid #000;
+}
+.left .top div {
+  display: inline-block;
+}
+.left .top .logo {
+  color: #fff;
+  font-size: 24px;
+}
+.left .top .links_toggle {
+  color: #9d9d9d;
+  font-size: 24px;
+}
+.left .top .links_toggle span:hover {
+  color: #fff;
+}
+.left .top div.add {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  padding: 0 10px;
+  margin: 0;
+  border: 0;
+  line-height: 50px;
+  color: #9d9d9d;
+  font-size: 24px;
+  user-select: none;
+}
+.left .top div.add:hover {
+  color: #fff;
+}
+.left .title {
+  width: 100%;
+  height: 50px;
+  padding: 0 10px;
+  line-height: 50px;
+  font-size: 24px;
+  color: #fff;
+  border-bottom: 1px solid #000;
+}
+.left .title span.pic {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: url(../images/icloud.png) no-repeat -7px -367px;
+  vertical-align: middle;
+}
+.left .lists {
+  flex-grow: 1;
+}
+.left .lists li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  padding: 0 15px;
+  line-height: 40px;
+}
+.left .lists li span.circle {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.left .lists li input {
+  margin-left: 1em;
+  height: 100%;
+  flex-grow: 1;
+  border: 0;
+  color: #fff;
+  font-size: 16px;
+  background: transparent;
+  border-bottom: 1px solid #000;
+  vertical-align: middle;
+}
+.left .lists li span.wifi {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: url(../images/icloud.png) no-repeat -140px -495px;
+  vertical-align: middle;
+}
+.left .lists li span.wifi:hover {
+  background: url(../images/icloud.png) no-repeat 3px -524px;
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+}
+.right .top {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  line-height: 50px;
+  padding: 0 20px;
+  border-bottom: 1px solid #ededed;
+}
+.right .top span.search {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin: 0 20px;
+  background: url(../images/icloud.png) no-repeat -136px -359px;
+}
+.right .top input {
+  height: 100%;
+  flex: auto;
+  border: 0;
+  font-size: 24px;
+  color: #ededed;
+  line-height: 50px;
+}
+.right .top a.load {
+  color: #333;
+  margin: 0 20px;
+}
+.right .top span.question {
+  margin-left: 20px;
+  width: 22px;
+  height: 22px;
+  background: url(../images/icloud.png) no-repeat 0 -549px;
+}
+.right .title {
+  display: flex;
+  height: 80px;
+  padding: 0 30px;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+.right .title h2 {
+  font-weight: bold;
+  line-height: 50px;
+  font-size: 32px;
+}
+.right .title a {
+  line-height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.right .area {
+  flex: 1 1 auto;
+}
+.right .area .create {
+  padding-left: 80px;
+  padding-right: 25px;
+}
+.right .area .create .inner {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  color: #a9afc1;
+  font-size: 24px;
+  border-bottom: 1px solid #ccc;
+}
+.right .area .ed .head {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #ccc;
+  padding-left: 40px;
+  font-size: 18px;
+  color: #9e9e9e;
+}
+.right .area .ed .head a.del_all {
+  position: absolute;
+  top: 0;
+  right: 2em;
+}
+.right .area .ed .item {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.right .area .ed .item input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  color: #9ea9c4;
+  font-size: 18px;
+  padding-left: 80px;
+  background: transparent;
+}
+.right .area .ed .item .circle {
+  position: absolute;
+  top: 14px;
+  left: 45px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 3px;
+  background-clip: content-box;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ccc;
+  background-color: #ccc;
+}
+.right .area .ed .item .del {
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+.right .area .ed .item .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: .2;
+  background: #04ACF6;
+}
+.right .area .ed .item .line {
+  position: absolute;
+  bottom: 0;
+  left: 80px;
+  width: 90%;
+  height: 1px;
+  background: #ccc;
+}
+.right .area .ing .head {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #ccc;
+  padding-left: 40px;
+  font-size: 18px;
+  color: #9e9e9e;
+}
+.right .area .ing .head a.del_all {
+  position: absolute;
+  top: 0;
+  right: 2em;
+}
+.right .area .ing .item {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.right .area .ing .item input {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  color: #9ea9c4;
+  font-size: 18px;
+  padding-left: 80px;
+  background: transparent;
+}
+.right .area .ing .item .circle {
+  position: absolute;
+  top: 14px;
+  left: 45px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 3px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #ccc;
+}
+.right .area .ing .item .del {
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+.right .area .ing .item .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: .2;
+  background: #04ACF6;
+}
+.right .area .ing .item .line {
+  position: absolute;
+  bottom: 0;
+  left: 80px;
+  width: 90%;
+  height: 1px;
+  background: #ccc;
+}
+.right .area .create_box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+}
+.right .area .create_box .bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  opacity: .2;
+  background: #ff0000;
+}
+.right .area .create_box .complete {
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+.right .area .create_box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding-left: 80px;
+  font-size: 18px;
+  color: #9e9e9e;
+  background: transparent;
+}
+div.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+div.option_box {
+  position: absolute;
+  top: 37px;
+  right: 72px;
+  z-index: 11;
+  width: 366px;
+  height: 203px;
+  border-radius: 4px;
+  padding: 7px;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+div.option_box .inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+div.option_box .inner .top {
+  margin-bottom: 16px;
+  padding: 0 15px;
+}
+div.option_box .inner .top input {
+  margin: 15px 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 1em;
+  font-size: 24px;
+}
+div.option_box .inner .top p {
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+div.option_box .inner .top .color_box {
+  width: 100%;
+  overflow: hidden;
+}
+div.option_box .inner .top .color_box li {
+  float: left;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-clip: content-box;
+  border-width: 2px;
+  border-style: solid;
+}
+div.option_box .inner .bottom {
+  width: 100%;
+  height: 47px;
+  line-height: 47px;
+  border-top: 1px solid #ccc;
+  padding: 0 20px;
+}
+div.option_box .inner .bottom .off {
+  color: #ff5353;
+  margin-right: 179px;
+}
+div.option_box .inner .bottom .complete {
+  color: #04acf6;
+}
+div.option_box .inner .bottom .quxiao {
+  color: #04acf6;
+}
+div.option_box .inner .bottom span {
+  color: #444;
+}

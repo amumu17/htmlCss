@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>提醒事项</title>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/jquery.js" charset="utf-8"></script>
+  <script src="js/angular.js" charset="utf-8"></script>
+  <script src="js/index.js" charset="utf-8"></script>
+</head>
+<body ng-controller="cer">
+  <!-- sidebar -->
+  <div class="left">
+    <!-- top -->
+    <div class="top">
+      <div class="logo">iCloud</div>
+      <div class="links_toggle">
+        <span>提醒事项</span>
+        <span class="angle"></span>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="add" ng-click="add()">+</div>
+    </div>
+    <!-- end top -->
+
+    <!-- title -->
+    <div class="title">
+      <span class="pic"></span>
+      <span>已计划</span>
+    </div>
+    <!-- end title -->
+
+    <!-- lists -->
+    <ul class="lists">
+      <li ng-repeat="v in datas" ng-click="show($index)" ng-style="{'background' : $index==index?'#2a2a2a':''}">
+        <span class="circle" style="background:{{v.theme}}"></span>
+        <input type="text" ng-model="v.title">
+        <span class="wifi"></span>
+      </li>
+    </ul>
+    <!-- end lists -->
+  </div>
+  <!-- end sidebar -->
+
+
+
+  <!-- main -->
+  <div class="right">
+    <!-- top -->
+    <div class="top">
+      <span class="search"></span>
+      <input type="text" placeholder="搜索所有提醒">
+      <a href="javascript:;" class="load">登录</a>
+      |
+      <span class="question"></span>
+    </div>
+    <!-- end top -->
+
+
+    <!-- title -->
+    <div class="title">
+      <h2 style="color:{{datas[index].theme}}">{{datas[index].title}}</h2>
+      <a href="javascript:;"  style="color:{{datas[index].theme}}" ng-click="change_start()">选项</a>
+    </div>
+    <!-- end title -->
+
+    <!-- 主体部分 -->
+    <div class="area">
+
+
+      <!-- 已完成 ed -->
+      <ul class="ed">
+        <!-- 表头 -->
+        <li class="head">
+          <span class="angle"></span>
+          已完成:0项
+          <a href="javascript:;" class="del_all" style="color:{{datas[index].theme}}" ng-click="del_all()">删除所有已完成选项</a>
+        </li>
+        <!-- end 表头 -->
+        <li class="item" ng-repeat="v in datas[index].items|filter:{done:true}" ng-click="edit_status=!edit_status">
+          <div class="bg" style="background:{{datas[index].theme}};" ng-show="edit_status"></div>
+          <span class="circle" style="background-color:{{datas[index].theme}};border-color:{{datas[index].theme}};"></span>
+          <input type="text" ng-model="v.item_title">
+          <a href="javascript:;" class="del" style="color:{{datas[index].theme}}" ng-show="edit_status" ng-click="del_someone($index)">{{$index}}删除</a>
+          <div class="line"></div>
+        </li>
+        <!-- dropdown -->
+        <!-- end dropdown -->
+      </ul>
+      <!-- end 已完成 ed -->
+
+
+      <!-- 未完成 ed -->
+      <ul class="ing">
+        <!-- 表头 -->
+        <li class="head">
+          <span class="angle"></span>
+          未完成:项
+        </li>
+        <!-- end 表头 -->
+        <li class="item" ng-repeat="v in datas[index].items|filter:{done:false}">
+          <div class="bg" style="background:{{datas[index].theme}}" ng-show="edit_status"></div>
+          <span class="circle" style="border-color:{{datas[index].theme}}" ng-click="change_down(v)"></span>
+          <input type="text" ng-model="v.item_title" ng-focus="edit_status=!edit_status" ng-blur="edit_status=!edit_status">
+          <a href="javascript:;" class="del" style="color:{{datas[index].theme}}" ng-show="edit_status">删除</a>
+          <div class="line"></div>
+        </li>
+        <!-- dropdown -->
+        <!-- end dropdown -->
+      </ul>
+      <!-- end 未完成 ed -->
+
+      <!-- create box -->
+      <div class="create_box" ng-show="create_box_status">
+        <div class="bg" style="background:{{datas[index].theme}}"></div>
+        <input type="text" value="" autofocus="create_box_status?autofocus:autofocus">
+        <a href="javascript:;" class="complete" style="color:{{datas[index].theme}}" ng-click="add_new_item($event)">完成</a>
+      </div>
+      <!-- end create box -->
+
+
+      <!-- create new item -->
+      <div class="create">
+        <div class="inner" ng-click="open_create_box()">新项目</div>
+      </div>
+      <!-- end create new item -->
+
+    </div>
+    <!-- end 主体部分 -->
+
+
+
+
+  </div>
+  <!-- end main -->
+
+
+  <!-- mask -->
+  <div class="mask" ng-show="option_status"></div>
+  <!-- end mask -->
+
+
+  <!-- 选项的盒子 -->
+  <div class="option_box" ng-show="option_status">
+    <div class="inner">
+      <div class="top">
+        <!-- 列表title -->
+        <input type="text" ng-model="copy_title" style="color:{{copy_theme}}">
+        <p>列表颜色</p>
+        <ul class="color_box">
+          <li ng-repeat="v in colors" style="background-color:{{v}};border-color:{{v}};padding:{{copy_theme==v?'2px':0}}" ng-click="change_theme(v)"></li>
+        </ul>
+      </div>
+      <div class="bottom">
+        <a href="javascript:;" class="off" ng-click="del(index)">删除</a>
+        <a href="javascript:;" class="quxiao" ng-click="option_status=false">取消</a>
+        <span>|</span>
+        <a href="javascript:;" class="complete" ng-click="complete()">完成</a>
+      </div>
+    </div>
+  </div>
+  <!-- end 选项的盒子 -->
+</body>
+</html>

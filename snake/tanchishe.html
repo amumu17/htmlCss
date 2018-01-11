@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>贪吃蛇</title>
+  <script src="jquery.min.js"></script>
+</head>
+<style>
+  body{
+    overflow: hidden;
+    background-image: url(images/bg5.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #000;
+  }
+  .area{
+    width: 500px;
+    height: 500px;
+    margin: 100px auto 0;
+    border-top: 1px solid #000;
+    border-left: 1px solid #000;
+    background: rgba(0,0,0,.8);
+  }
+  .block{
+    width: 19px;
+    height: 19px;
+    border-right: 1px solid #000;
+    border-bottom: 1px solid #000;
+    float: left;
+  }
+  .snakebody{
+    background: #FF6700;
+    border-right-color: #FF6700;
+  }
+  .snakehead{
+    background: #0067FF;
+    border-right-color: #0067FF;
+  }
+  .food{
+    background: #FF0000;
+  }
+  .lose{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: rgba(0,0,0,.9);
+  }
+  .lose div{
+    width: 800px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    border: 10px solid #FF6700;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    font-size: 108px;
+    font-weight: 1000;
+    color: #FF0000;
+  }
+  .logo{
+    position: absolute;
+    top: 20px;
+    left: 12px;
+    z-index: 1;
+    width: 160px;
+  }
+
+</style>
+<body>
+  <div class="area"></div>
+  <img class="logo" src="images/snake==.jpg" alt="">
+</body>
+</html>
+<!-- 脚本 -->
+<script>
+  var snake_arr = [{x:0,y:0},{x:1,y:0},{x:2,y:0}];
+  var snakehead = snake_arr[snake_arr.length-1];
+  var dir = "r";
+  var t;
+  for (var i = 0; i < 25; i++) {
+    for (var j = 0; j < 25; j++) {
+        $("<div/>").addClass("block").attr("id",j+"_"+i).appendTo(".area");
+    };
+  };
+  function draw_snake(){
+    $(".snakebody").removeClass("snakebody");
+    $(".snakehead").removeClass("snakehead");
+    $.each(snake_arr,function(i,v){
+      $("#"+v.x+"_"+v.y).addClass("snakebody")
+    });
+    $("#"+snakehead.x+"_"+snakehead.y).addClass("snakehead");
+  };//draw-snake
+  draw_snake();
+  function snake_move(){
+    switch(dir){
+      case "r": snakehead = {x:snakehead.x+1,y: snakehead.y};
+      break;
+      case "l": snakehead = {x:snakehead.x-1,y: snakehead.y};
+      break;
+      case "t": snakehead = {x:snakehead.x,y: snakehead.y-1};
+      break;
+      case "b": snakehead = {x:snakehead.x,y: snakehead.y+1};
+      break;
+    };//switch
+      snake_arr.push(snakehead);
+      if ($("#"+snakehead.x+"_"+snakehead.y).hasClass("food")) {
+        $(".food").removeClass("food");
+        create_food();
+      }else{
+        snake_arr.shift();
+      };
+      if ($("#"+snakehead.x+"_"+snakehead.y).length == 0 || $("#"+snakehead.x+"_"+snakehead.y).hasClass("snakebody")) {
+        lose();
+        clearInterval(t);
+      };
+      draw_snake();
+  };//snake_move
+
+  $(document).keydown(function(e){
+    switch(e.keyCode){
+      case 65:
+      case 37: dir = "l"; break;
+      case 87:
+      case 38: dir = "t"; break;
+      case 68:
+      case 39: dir = "r"; break;
+      case 83:
+      case 40: dir = "b"; break;
+    };//switch
+  });//keydiwn
+  t = setInterval(snake_move,500);
+  function create_food(){
+    do{
+      var num_x = Math.floor(Math.random()*24);
+      var num_y = Math.floor(Math.random()*24);
+    }while($("#"+num_x+"_"+num_y).hasClass("snakebody"));
+    $("#"+num_x+"_"+num_y).addClass("food")
+  };//create_food
+  create_food();
+  function  lose(){
+    var lose_jp = $("<div/>");
+    $("<div/>").html("You Are Lose").appendTo(lose_jp);
+    lose_jp.addClass("lose").appendTo($("body"));
+  }
+
+</script>
